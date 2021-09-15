@@ -1,99 +1,141 @@
 import java.applet.*;
 import java.awt.*;
-import java.awt.Graphics;
 import java.awt.event.*;
 
 public class Q3 extends Applet implements ActionListener {
-    Label l1,l2,l3,l4,l5,l6;
     TextField t1,t2,t3,t4,t5,t6;
     Button b;
+    Label l1,l2,l3,l4,l5,l6;
     public void init(){
-        l1 = new Label("MARK 1:");
-        t1 = new TextField();
-        l2 = new Label("MARK 2:");
-        t2 = new TextField();
-        l3 = new Label("MARK 3:");
-        t3 = new TextField();
-        l4 = new Label("MARK 4:");
-        t4 = new TextField();
-        l5 = new Label("MARK 5:");
-        t5 = new TextField();
-        l6 = new Label("PERCENTAGE:");
-        t6 = new TextField();
+        l1=new Label("mark1");
+//l1.setBounds(100,100,200,20);
+        t1= new TextField(5);
+//t1.setBounds(100,50,200,20);
+
+        l2=new Label("mark2");
+//l2.setBounds(100,130,100,30);
+        t2= new TextField(5);
+//t2.setBounds(100,80,100,20);
+
+        l3=new Label("mark3");
+//l3.setBounds(100,160,100,20);
+        t3= new TextField(5);
+//t3.setBounds(100,120,100,20);
+
+        l4=new Label("mark4");
+//l4.setBounds(100,130,100,30);
+        t4= new TextField(5);
+//t4.setBounds(100,80,100,20);
+
+        l5=new Label("mark5");
+//l5.setBounds(100,130,100,30);
+        t5= new TextField(5);
+//t5.setBounds(100,80,100,20);
+
+        l6=new Label("result");
+//l6.setBounds(100,200,100,20);
+
+        t6=new TextField(5);
 
 
-        b = new Button("SEE STATUS");
 
-        setLayout(null);
+        t1.setBounds(210,40,100,20);
+        t2.setBounds(210,80,100,20);
+        t3.setBounds(210,120,100,20);
+        t4.setBounds(210,80,100,20);
+        t5.setBounds(210,120,100,20);
+        t6.setBounds(210,140,100,20);
+        l1.setBounds(100,40,100,20);
+        l2.setBounds(100,80,100,20);
+        l3.setBounds(100,120,100,20);
+        l4.setBounds(100,140,100,20);
+        l5.setBounds(100,120,100,20);
+        l6.setBounds(100,140,100,20);
 
-        l1.setBounds(450,50,70,20);
-        t1.setBounds(520,50,100,20);
-        l2.setBounds(450,80,70,20);
-        t2.setBounds(520,80,100,20);
-        l3.setBounds(450,110,70,20);
-        t3.setBounds(520,110,100,20);
-        l4.setBounds(450,140,70,20);
-        t4.setBounds(520,140,100,20);
-        l5.setBounds(450,170,70,20);
-        t5.setBounds(520,170,100,20);
-        l6.setBounds(450,200,100,20);
-        t6.setBounds(550,200,100,20);
+        b=new Button("find");
+        b.setBounds(230,150,60,50);
 
-        b.setBounds(450,290,80,30);
+//t4.setBounds(100,200,100,20);
 
         add(l1);
-        add(l2);
-        add(l3);
-        add(l4);
-        add(l5);
-        add(l6);
         add(t1);
+        add(l2);
         add(t2);
+        add(l3);
         add(t3);
+        add(l4);
         add(t4);
+        add(l5);
         add(t5);
-        add(t6);
         add(b);
         b.addActionListener(this);
-
+        add(l6);
+        add(t6);
     }
     public void actionPerformed(ActionEvent e){
-        float m1, m2,m3, m4,m5,percent;
 
-        m1= Float.parseFloat(t1.getText());
-        m2= Float.parseFloat(t2.getText());
-        m3= Float.parseFloat(t3.getText());
-        m4= Float.parseFloat(t4.getText());
-        m5= Float.parseFloat(t5.getText());
+        int mark1=0;
+        int mark2=0;
+        int mark3=0;
+        int mark4=0;
+        int mark5=0;
 
-        percent=((m1+m2+m3+m4+m5)*100)/500;
+        int total=0;
 
-        t6.setText(String.valueOf(percent));
-        repaint();
+
+        mark1= Integer.parseInt(t1.getText());
+        mark2= Integer.parseInt(t2.getText());
+        mark3= Integer.parseInt(t3.getText());
+        mark4= Integer.parseInt(t2.getText());
+        mark5= Integer.parseInt(t3.getText());
+        if(e.getSource()==b){
+
+            total=(mark1+mark2+mark3+mark4+mark5)/5;
+            t6.setText(String.valueOf(total));
+        }
+
+
+
     }
-
     @Override
     public void paint(Graphics g){
+        int mark1=0;
+        int mark2=0;
+        int mark3=0;
+        int mark4=0;
+        int mark5=0;
 
-        float p;
-        p= Float.parseFloat(t6.getText());
+        int total=0;
 
-        g.setColor(Color.orange);
-        g.fillOval(0,0,300,300);
-        if(p> 50.0) {
-            g.setColor(Color.RED);
-            g.fillOval(80,75,30,30);
-            g.fillOval(190,75,30,30);
-            g.setColor(Color.black);
-            g.fillArc (75,100,150,150,0,-180);
+
+        mark1= Integer.parseInt(t1.getText());
+        mark2= Integer.parseInt(t2.getText());
+        mark3= Integer.parseInt(t3.getText());
+        mark4= Integer.parseInt(t2.getText());
+        mark5= Integer.parseInt(t3.getText());
+
+        total=(mark1+mark2+mark3+mark4+mark5)/5;
+
+        g.setColor(Color.yellow);
+        g.fillOval(20,20,150,150);   // For face
+        g.setColor(Color.black);
+        g.fillOval(50,60,15,25);     // Left Eye
+        g.fillOval(120,60,15,25);    // Right Eye
+        int x[] = {95,85,106,95};
+        int y[] = {85,104,104,85};
+        g.drawPolygon(x, y, 4);      // Nose
+        g.fillPolygon(x, y, 4);
+
+        // g.drawLine(50,126,60,116);   // Smile arc1
+        //g.drawLine(128,115,139,126);  // Smile arc2
+
+        if(total > 50){
+
+            g.drawArc(55,95,78,50,0,-180);  // Smile
         }
-        else {
-            g.setColor(Color.red );
-            g.fillOval(80,75,30,30);
-            g.fillOval(190,75,30,30);
-            g.setColor(Color.black);
-            g.drawArc(75,150,150,150,0,180);
+        else
+        {
+            g.drawArc(55,120,78,50,0,180);  // Smile
 
         }
-    }
-}
+    }}
